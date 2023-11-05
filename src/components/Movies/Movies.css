@@ -1,0 +1,44 @@
+.movies {
+  padding: 74px 70px 0;
+}
+
+.movies__more {
+  color: white;
+  display: block;
+  cursor: pointer;
+  margin: 77px auto 89px;
+  background-color: #202020;
+  border: 1px solid #424242;
+  border-radius: 6px;
+  padding: 11px 148px 9px 148px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  transition: 0.3s;
+}
+
+.movies__more:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .movies {
+    padding: 70px 30px 0;
+  }
+
+  .movies__more {
+    margin: 77px auto 80px;
+  }
+  
+}
+
+@media screen and (max-width: 384px) {
+  .movies {
+    padding: 70px 10px 0;
+  }
+
+  .movies__more {
+    padding: 11px 107px;
+  }
+  
+}

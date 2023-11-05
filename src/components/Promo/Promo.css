@@ -1,0 +1,129 @@
+.promo {
+  background-color: #073042;
+  min-height: 500px;
+  padding-top: 148px;
+}
+
+.promo__container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.promo__text-container {
+  max-height: 242px;
+  max-width: 640px;
+}
+
+.promo__text-main {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  margin: 0;
+}
+
+.promo__text-other {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.5;
+  max-width: 310px;
+  margin-bottom: 0;
+  margin-top: 38px;
+}
+
+@media screen and (max-width: 1024px) {
+  .promo__text-main {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+.promo__image-container {
+  width: 310px;
+  height: 304px;
+}
+
+.promo__image {
+  width: 100%;
+}
+
+.promo__link {
+  text-decoration: none;
+  color: white;
+  margin-left: 70px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 86px;
+  transition: 0.3s;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.promo__link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+
+  .promo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .promo__container {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 65px;
+  }
+
+  .promo__text-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .promo__link {
+    align-self: center;
+    margin: 92px 0 76px;
+  }
+
+  .promo__text-other {
+    margin-top: 23px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .promo {
+    padding-top: 78px;
+  }
+
+  .promo__container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .promo__text-main {
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1.2px
+  }
+
+  .promo__image-container {
+    width: 210px;
+    height: 206px;
+  }
+
+  .promo__link {
+    margin: 92px 0 30px;
+  }
+
+  .promo__text-other {
+    margin-top: 10px;
+  }
+
+}
