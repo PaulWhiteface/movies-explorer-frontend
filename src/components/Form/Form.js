@@ -1,13 +1,13 @@
 import './Form.css';
 import { NavLink } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import LogoLink from '../LogoLink/LogoLink';
 
 function Form(props) {
   const { title, link, button, textLink, children, linkref } = props;
 
   return (
     <form className="form__container">
-      <img alt="логотип" src={logo} className="form__logo" />
+      <LogoLink />
       <h1 className="form__title">{title}</h1>
       <div className="form__input-container">
 
@@ -17,8 +17,8 @@ function Form(props) {
         <input className="form__input" required></input>
         <span className="form__input-email-err"></span>
 
-        <span className="form__input-text" required>Пароль</span>
-        <input className="form__input"></input>
+        <span className="form__input-text">Пароль</span>
+        <input className="form__input" required></input>
         <span className="form__input-pass-err"></span>
 
       </div>

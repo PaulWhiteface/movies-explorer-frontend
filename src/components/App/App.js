@@ -10,21 +10,17 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
-    
+
   return (
-    <div className="page">
-      <div className="page__container">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login/>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/saved-movies" element={<SavedMovies />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/signup" element={<Register />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

@@ -13,7 +13,7 @@ function AboutMe () {
            и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
            С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, 
            начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-          <a href="https://github.com/PaulWhiteface" className="about-me__link">Github</a>
+          <a target="blank" href="https://github.com/PaulWhiteface" className="about-me__link">Github</a>
         </div>
         <div className="about-me__avatar-container">
           <img className="about-me__avatar" src={avatar} alt="аватарка" />

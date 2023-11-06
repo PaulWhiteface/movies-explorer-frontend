@@ -1,7 +1,9 @@
 .promo {
-  background-color: #073042;
+  max-width: 1280px;
+  margin: 0 auto;
   min-height: 500px;
   padding-top: 148px;
+  
 }
 
 .promo__container {
@@ -64,7 +66,7 @@
 }
 
 .promo__link:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 768px) {

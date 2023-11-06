@@ -9,6 +9,8 @@
   justify-content: space-between;
   padding-bottom: 13px;
   border-bottom: 1px solid #424242;
+  width: 100%;
+
 }
 
 .search__input {

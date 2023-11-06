@@ -6,18 +6,23 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import './Main.css';
 
 function Main() {
   return (
     <>
       <Header page="green" />
         <main className="main">
-          <Promo />
+          <div className="main__promo">
+            <Promo />
+          </div>
           <AboutProject />
-          <Techs />
-          <AboutMe />
-          <Portfolio />
-        </main>
+          <div className="main__techs">
+           <Techs />
+          </div>
+            <AboutMe />
+            <Portfolio />
+        </main >
       <Footer />
     </>
   );

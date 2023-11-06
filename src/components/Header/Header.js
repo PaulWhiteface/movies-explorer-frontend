@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
-import logo from '../../images/logo.svg';
 import acc from '../../images/account-icon.svg'
 import Navigation from '../Navigation/Navigation';
+import LogoLink from '../LogoLink/LogoLink';
 
 function Header (props) {
   const { page } = props;
@@ -28,9 +28,7 @@ function Header (props) {
   let loggedIn = true;
   return(
     <header class="header">
-      <NavLink to="/" className="header__logo">
-        <img src={logo} alt="логотип" />
-      </NavLink>
+      <LogoLink />
       { loggedIn ? 
       <>
         <div className="header__nav-container">

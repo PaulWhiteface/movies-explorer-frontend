@@ -1,4 +1,7 @@
 .about {
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
   max-height: 608px;
   display: flex;
   flex-direction: column;
