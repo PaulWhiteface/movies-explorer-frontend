@@ -1,0 +1,136 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 148px;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__input-container {
+  width: 410px;
+  display: flex;
+  position: relative;
+  font-size: 11px;
+  font-weight: 500;
+  border-bottom: 1px solid #424242;
+}
+
+.profile__input-container:last-of-type {
+    border: 0;
+  }
+
+.profile__input-text {
+  align-self: center;
+  position: absolute;
+}
+
+.profile__input {
+  color: white;
+  text-align: end;
+  background-color: #202020;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  border: 0;
+  width: 100%;
+}
+
+.profile__name {
+  margin: 0;
+  margin-bottom: 123px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__button {
+  margin-top: 220px;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: #202020;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile__button:last-child {
+  margin-top: 16px;
+  color: #EE3465;
+  margin-bottom: 70px;
+}
+
+.profile__button:hover {
+  opacity: 0.7;
+}
+
+.profile__submit {
+  background-color: #4285F4;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  height: 45px;
+  border-radius: 3px;
+  margin-top: 223px;
+  transition: 0.3s;
+  margin-bottom: 70px;
+}
+
+.profile__submit:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding-top: 311px;
+  }
+
+  .profile__name {
+    margin-bottom: 79px;
+  }
+
+  .profile__input-container {
+    font-weight: 400;
+  }
+
+  .profile__button {
+    margin-top: 194px;
+  }
+
+  .profile__button:last-child {
+    margin-bottom: 268px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    padding-top: 145px;
+  }
+
+  .profile__name {
+    margin-bottom: 63px;
+  }
+  .profile__input-container {
+    width: 260px; 
+  }
+
+  .profile__button {
+    margin-top: 361px;
+  }
+
+  .profile__button:last-child {
+    margin-bottom: 40px;
+  }
+
+  .profile__submit {
+    margin-top: 155px;
+  }
+}

@@ -1,0 +1,126 @@
+.techs {
+  max-height: 625px;
+  background-color: #272727;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 70px 86px 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.techs__title {
+  border-bottom: 1px solid white;
+  padding-bottom: 23px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+}
+
+.techs__head-text {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  margin: 0;
+  align-self: center;
+  margin-top: 90px;
+}
+
+.techs__main-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  align-self: center;
+  max-width: 460px;
+  text-align: center;
+  margin-top: 26px;
+}
+
+.techs__container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 0;
+  gap: 10px;
+}
+
+.techs__item {
+  width: 90px;
+  height: 60px;
+  list-style-type: none;
+  background-color: #303030;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 90px 50px 73px;
+  }
+
+  .techs__head-text {
+    margin-top: 80px;
+  }
+
+  .techs__container {
+    margin-top: 83px;
+  }
+
+  .techs__item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+  }
+
+  .techs__main-text {
+    font-size: 12px;
+    margin-top: 18px;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  .techs__container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .techs {
+    padding: 70px 18px 56px;
+  }
+
+  .techs__title {
+    font-size: 18px;
+    padding-bottom: 29px;
+  }
+
+  .techs__container {
+    max-width: 178px;
+    margin-top: 50px;
+    justify-content: start;
+  }
+
+  .techs__head-text {
+    margin-top: 49px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+  
+  .techs__main-text {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  
+}

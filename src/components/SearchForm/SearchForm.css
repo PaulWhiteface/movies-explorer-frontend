@@ -1,0 +1,128 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+.search__container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #424242;
+  width: 100%;
+
+}
+
+.search__input {
+  border: 0;
+  padding: 0;
+  background-color: #202020;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: normal;
+  width: 90%;
+}
+
+.search__submit {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50px;
+  padding: 0;
+  background-color: #202020;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search__submit:hover {
+  opacity: 0.8;
+}
+
+.search__checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.search__checkbox + .search__checkbox-label {
+  cursor: pointer;
+}
+
+.search__checkbox + .search__checkbox-label::before {
+  content: '';
+  width: 36px;
+  height: 20px;
+  display: inline-block;
+  background-image: url('../../images/smalltumboff-black.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.2s linear;
+}
+
+.search__checkbox:checked + .search__checkbox-label::before {  
+  background-image: url('../../images/smalltumb.svg');
+}
+
+.search__checkbox-container {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 47px;
+}
+
+.search__checkbox-text {
+  margin: 0;
+  margin-top: 1px;
+  margin-left: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    margin-top: 84px;
+  }
+
+  .search__checkbox-container {
+    flex-direction: row-reverse;
+    margin-top: 30px;
+  }
+
+  .search__checkbox-text {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .search {
+    margin-top: 91px;
+  }
+
+  .search__container {
+    margin-left: 3px;
+    padding-bottom: 7px;
+  }
+
+  .search__input {
+    font-size: 18px;
+  }
+
+  .search__submit {
+    margin-right: 4px;
+  }
+
+  .search__checkbox-container {
+    margin-top: 40px;
+    justify-content: center;
+
+  }
+
+  .search__checkbox-text {
+    margin-left: 0;
+    margin-top: 2px;
+    margin-right: 16px;
+    font-size: 11px;
+  }
+  
+}

@@ -1,0 +1,87 @@
+.card {
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+  padding-bottom: 14px;
+  margin: 0;
+  background-color: #222;
+  border-radius: 8px;
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: flex;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 12px 0 12px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.card__button {
+  width: 20px;
+  height: 22px;
+  background-image: url('../../images/save8d.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  background-color: #222;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.card__button-active {
+  width: 22px;
+  height: 22px;
+  background-image: url('../../images/save8g.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  background-color: #222;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.card__button-cross {
+  width: 22px;
+  height: 22px;
+  background-image: url('../../images/d8.svg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  object-fit: cover;
+  background-color: #222;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card__button-cross:hover {
+  background-color: #8B8B8B;
+}
+
+.card__hours {
+  margin: 10px 0 0 12px;
+  color: #8B8B8B;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 320px) {
+  
+}
