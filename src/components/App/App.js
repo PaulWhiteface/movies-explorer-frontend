@@ -123,7 +123,7 @@ function App() {
     navigate('/', { replace: true });
   };
 
-  function tokenCheckAuth() {  //Проверка токена
+  const tokenCheckAuth = React.useCallback(() => {  //Проверка токена
     const jwt = localStorage.getItem("token");
     if (jwt) {
       mainApi.checkToken(jwt).then((user) => {
@@ -134,8 +134,13 @@ function App() {
           localStorage.removeItem("token");
           console.log(err);
         })
+        .finally(() => {
+          setIsLoadingLoginCheck(false)
+        })
+    } else {
+      setIsLoadingLoginCheck(false)
     }
-  }
+  }, [])
 
   function saveFilm(film) {  //Сохранение фильма
     mainApi.saveCard(
