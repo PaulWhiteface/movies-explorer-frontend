@@ -101,5 +101,5 @@ class MainApi {
   }
 }
 
-const mainApi = new MainApi("api.movie.whiteface.nomoredomainsrocks.ru");
+const mainApi = new MainApi("https://api.movie.whiteface.nomoredomainsrocks.ru");
 export default mainApi;

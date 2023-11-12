@@ -35,7 +35,6 @@ function App() {
     loggedIn &&
       Promise.all([mainApi.getUserInfo(), mainApi.getMyMovies()])
         .then(([userData, savedMovies]) => {
-          console.log(savedMovies)
           setCurrentUser(userData);
           setSavedFilms(savedMovies);
         })
