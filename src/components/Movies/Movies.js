@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { validationFilms, filterTimeLength } from '../../utils/SearchFilmsValidation';
 import moviesApi from '../../utils/MoviesApi';
+import { MORE_DECKTOP, MORE_DECKTOP_TABLET, MORE_TABLET, MORE_MOBILE } from '../../utils/constants';
 
 function Movies({ isLogged, onDeleteFilm, onSaveFilm, savedFilms }) {
   const [initialFilms, setInitialFilms] = React.useState([]);  //Фильмы найденные по строке поиска
@@ -108,13 +109,13 @@ function Movies({ isLogged, onDeleteFilm, onSaveFilm, savedFilms }) {
 
   function handleMore() {
     if (window.innerWidth > 1279) {
-      setShowCards(showCards + 4)
+      setShowCards(showCards + MORE_DECKTOP)
     } else if (window.innerWidth > 990) {
-      setShowCards(showCards + 3)
+      setShowCards(showCards + MORE_DECKTOP_TABLET)
     } else if (window.innerWidth > 630) {
-      setShowCards(showCards + 2)
+      setShowCards(showCards + MORE_TABLET)
     } else if (window.innerWidth < 630) {
-      setShowCards(showCards + 1)
+      setShowCards(showCards + MORE_MOBILE)
     }
   }
 

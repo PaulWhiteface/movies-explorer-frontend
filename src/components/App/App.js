@@ -11,6 +11,7 @@ import NotFound from '../NotFound/NotFound';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
 
 function App() {
 
@@ -23,33 +24,32 @@ function App() {
   });
 
   const [savedFilms, setSavedFilms] = React.useState([]);
-  
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoadingLoginCheck, setIsLoadingLoginCheck] = React.useState(true);
+
 
   const navigate = useNavigate();
 
-  React.useEffect(() => {  //Автоматическая проверка токена 
+  React.useEffect(() => {
     tokenCheckAuth();
-    if (loggedIn) {
-      mainApi.getUserInfo().then((res) => {
-        const user = res;
-        setCurrentUser(user)
-        navigate('/movies', {replace: true})
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-
-      mainApi.getMyMovies().then((data) => {
-      setSavedFilms(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    }
+    loggedIn &&
+      Promise.all([mainApi.getUserInfo(), mainApi.getMyMovies()])
+        .then(([userData, savedMovies]) => {
+          console.log(savedMovies)
+          setCurrentUser(userData);
+          setSavedFilms(savedMovies);
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          setIsLoadingLoginCheck(false);
+        })
   }, [loggedIn])
 
-  function handleRegistration ({ name, email, password }) {  //Регистрация пользователя
-    mainApi.registration( name, email, password )
+  function handleRegistration({ name, email, password }) {  //Регистрация пользователя
+    setIsLoading(true)
+    mainApi.registration(name, email, password)
       .then(() => {
         handleLogin({ email, password });
         setErrorMessage({
@@ -66,14 +66,18 @@ function App() {
         }
         console.log(err);
       })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   function handleLogin({ email, password }) {  //Логин пользователя (вход)
+    setIsLoading(true)
     mainApi.logIn({ email, password })
       .then((data) => {
         localStorage.setItem("token", data.token);
         setLoggedIn(true);
-        navigate('/movies', {replace: true})
+        navigate('/movies', { replace: true })
         setErrorMessage({
           state: false,
           message: ''
@@ -88,9 +92,13 @@ function App() {
         }
         console.log(err);
       })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
-  function handleUpdateProfile({name, email}) {  //Изменить данные профиля
+  function handleUpdateProfile({ name, email }) {  //Изменить данные профиля
+    setIsLoading(true)
     mainApi.setUserInfo(name, email)
       .then((user) => {
         setCurrentUser(user);
@@ -100,8 +108,11 @@ function App() {
         setIsSuccess(false);
         console.log(err);
       })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
- 
+
   function handleSignOut() {  //Выйти из профиля
     localStorage.removeItem("token");
     localStorage.removeItem('allFilms');
@@ -109,7 +120,7 @@ function App() {
     localStorage.removeItem('shortFilms');
     localStorage.removeItem('filmSearch');
     setLoggedIn(false);
-    navigate('/', {replace: true});
+    navigate('/', { replace: true });
   };
 
   function tokenCheckAuth() {  //Проверка токена
@@ -117,17 +128,16 @@ function App() {
     if (jwt) {
       mainApi.checkToken(jwt).then((user) => {
         setLoggedIn(true);
-        setCurrentUser(user)
       })
-      .catch((err) => {
-        setLoggedIn(false);
-        localStorage.removeItem("token");
-        console.log(err);
-      })
+        .catch((err) => {
+          setLoggedIn(false);
+          localStorage.removeItem("token");
+          console.log(err);
+        })
     }
   }
 
-  function saveFilm (film) {  //Сохранение фильма
+  function saveFilm(film) {  //Сохранение фильма
     mainApi.saveCard(
       {
         country: film.country,
@@ -151,7 +161,7 @@ function App() {
       });
   }
 
-  function deleteFilm (film) {  //Удаление фильма из сохраненных
+  function deleteFilm(film) {  //Удаление фильма из сохраненных
     mainApi.deleteCard(film._id)
       .then(() => {
         setSavedFilms((savedFilms) => savedFilms.filter((card) => card._id !== film._id))
@@ -165,25 +175,28 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Routes>
-        <Route path="/" element={<Main isLogged={loggedIn} />} />
+      { isLoadingLoginCheck && <Preloader /> }
+      { !isLoadingLoginCheck ?
+        <Routes>
+          <Route path="/" element={<Main isLogged={loggedIn} />} />
 
-        <Route path="/movies" 
-          element={<ProtectedRoute 
-            element={Movies} isLogged={loggedIn} onDeleteFilm={deleteFilm} onSaveFilm={saveFilm} savedFilms={savedFilms}/>} />
+          <Route path="/movies"
+            element={<ProtectedRoute
+              element={Movies} isLogged={loggedIn} onDeleteFilm={deleteFilm} onSaveFilm={saveFilm} savedFilms={savedFilms} />} />
 
-        <Route path="/saved-movies" 
-          element={<ProtectedRoute 
-            element={SavedMovies} isLogged={loggedIn} onDeleteFilm={deleteFilm} savedFilms={savedFilms}/>} />
-            
-        <Route path="/profile"
-          element={<ProtectedRoute 
-            element={Profile} onOut={handleSignOut} onUpdate={handleUpdateProfile} isSuccess={isSuccess} isLogged={loggedIn}  />} />
+          <Route path="/saved-movies"
+            element={<ProtectedRoute
+              element={SavedMovies} isLogged={loggedIn} onDeleteFilm={deleteFilm} savedFilms={savedFilms} />} />
 
-        <Route path="/signup" element={<Register onRegistration={handleRegistration} isLogged={loggedIn} error={errorMessage} />} />
-        <Route path="/signin" element={<Login onLogin={handleLogin} isLogged={loggedIn} error={errorMessage} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="/profile"
+            element={<ProtectedRoute
+              element={Profile} isLoading={isLoading} onOut={handleSignOut} onUpdate={handleUpdateProfile} isSuccess={isSuccess} isLogged={loggedIn} />} />
+
+          <Route path="/signup" element={<Register isLoading={isLoading} onRegistration={handleRegistration} isLogged={loggedIn} error={errorMessage} />} />
+          <Route path="/signin" element={<Login isLoading={isLoading} onLogin={handleLogin} isLogged={loggedIn} error={errorMessage} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes> : ''
+      }
     </CurrentUserContext.Provider>
   );
 }

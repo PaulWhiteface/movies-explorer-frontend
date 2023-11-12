@@ -3,8 +3,9 @@ import './Register.css';
 import Form from '../Form/Form';
 import { Navigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+import { NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Register({ onRegistration, isLogged, error }) {
+function Register({ onRegistration, isLogged, error, isLoading }) {
   const { values, errors, isValid, handleChange } = useForm();
 
   if (isLogged) {
@@ -31,14 +32,15 @@ function Register({ onRegistration, isLogged, error }) {
         disableButton={isValid}
         onSubmit={handleSubmit}
         error={error}
+        isLoading={isLoading}
         children={
           <>
             <span className="form__input-text">Имя</span>
-            <input className="form__input" name="name" type="text" onChange={handleChange} minLength={2} maxLength={40} required></input>
+            <input className="form__input" name="name" pattern={NAME_REGEX} type="text" onChange={handleChange} minLength={2} maxLength={40} required></input>
             <span className="form__input-err">{errors.name}</span>
 
             <span className="form__input-text" >E-mail</span>
-            <input className="form__input" name="email" type="email" onChange={handleChange} required></input>
+            <input className="form__input" name="email" pattern={EMAIL_REGEX} type="email" onChange={handleChange} required></input>
             <span className="form__input-err">{errors.email}</span>
 
             <span className="form__input-text" >Пароль</span>

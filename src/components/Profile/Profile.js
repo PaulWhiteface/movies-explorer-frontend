@@ -4,8 +4,9 @@ import Header from '../Header/Header';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useForm from '../../hooks/useForm';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import Preloader from '../Preloader/Preloader';
 
-function Profile ({ onOut, onUpdate, isSuccess, isLogged }) {
+function Profile ({ onOut, onUpdate, isSuccess, isLogged, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const { values, errors, handleChange, isValid, resetForm } = useForm();  //Валидация и управление формой
 
@@ -64,7 +65,8 @@ function Profile ({ onOut, onUpdate, isSuccess, isLogged }) {
             <span className="profile__input-err">{errors.email}</span>
             { submit ? 
               <>
-                <InfoTooltip isOpen={popupOpen} isSuccess={isSuccess} onClose={closePopup} />
+                { isLoading && <Preloader />}
+                { !isLoading && <InfoTooltip isOpen={popupOpen} isSuccess={isSuccess} onClose={closePopup} />}
                 <button className={ actualValues || !isValid ? "profile__submit profile__submit-disable" : "profile__submit profile__submit-enable"} type="submit">Сохранить</button>
               </>
                  :

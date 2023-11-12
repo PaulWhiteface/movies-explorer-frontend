@@ -3,8 +3,9 @@ import './Login.css';
 import Form from '../Form/Form';
 import { Navigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+import { EMAIL_REGEX } from '../../utils/constants';
 
-function Login({onLogin, isLogged, error}) {
+function Login({onLogin, isLogged, error, isLoading}) {
   const { values, errors, isValid, handleChange } = useForm();
 
   if (isLogged) {
@@ -30,10 +31,11 @@ function Login({onLogin, isLogged, error}) {
         disableButton={isValid}
         onSubmit={handleSubmit}
         error={error}
+        isLoading={isLoading}
         children={
           <>
             <span className="form__input-text" >E-mail</span>
-            <input className="form__input" required name="email" type="email" onChange={handleChange}></input>
+            <input className="form__input" pattern={EMAIL_REGEX} required name="email" type="email" onChange={handleChange}></input>
             <span className="form__input-err">{errors.email}</span>
 
             <span className="form__input-text" >Пароль</span>
