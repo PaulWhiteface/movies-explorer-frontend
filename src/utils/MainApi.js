@@ -101,5 +101,5 @@ class MainApi {
   }
 }
 
-const mainApi = new MainApi('http://localhost:3000');
+const mainApi = new MainApi('https://api.movie.whiteface.nomoredomainrocks.ru');
 export default mainApi;
