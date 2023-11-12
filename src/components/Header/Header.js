@@ -6,7 +6,7 @@ import Navigation from '../Navigation/Navigation';
 import LogoLink from '../LogoLink/LogoLink';
 
 function Header (props) {
-  const { page } = props;
+  const { page, isLogged } = props;
 
   const [navOpen, setNavOpen] = React.useState(false);
 
@@ -25,11 +25,10 @@ function Header (props) {
     iconStyle = "header__account-img-green"
   }
 
-  let loggedIn = true;
   return(
-    <header class="header">
+    <header className="header">
       <LogoLink />
-      { loggedIn ? 
+      { isLogged ? 
       <>
         <div className="header__nav-container">
           <NavLink to="/movies" className={linkActiveHandler}>Фильмы</NavLink>

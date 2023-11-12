@@ -21,6 +21,11 @@
   font-weight: 500;
   line-height: normal;
   width: 90%;
+  color: white;
+}
+
+.search__err {
+  color: #EE3465;
 }
 
 .search__submit {

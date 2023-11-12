@@ -8,10 +8,10 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './Main.css';
 
-function Main() {
+function Main({ isLogged }) {
   return (
     <>
-      <Header page="green" />
+      <Header page="green" isLogged={isLogged} />
         <main className="main">
           <div className="main__promo">
             <Promo />
