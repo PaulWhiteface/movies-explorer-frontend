@@ -25,6 +25,12 @@
   margin-bottom: 10px;
 }
 
+.form__input-err {
+  color: #EE3465;
+  font-size: 10px;
+  margin: 0;
+}
+
 .form__input {
   background-color: #2F2F2F;
   color: white;
@@ -35,19 +41,35 @@
   font-size: 13px;
 }
 
+.form__err {
+  color: #EE3465;
+  font-size: 10px;
+  margin: 0;
+  text-align: center;
+}
+
 .form__button {
-  background-color: #4285F4;
   width: 100%;
   color: white;
-  cursor: pointer;
   border: 0;
   height: 45px;
   border-radius: 3px;
   margin-top: 69px;
+}
+
+.form__button-disable {
+  pointer-events: none;
+  background-color: #2F2F2F;
+  border: 1px solid white;
+}
+
+.form__button-enable {
+  background-color: #4285F4;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.form__button:hover {
+.form__button-enable:hover {
   opacity: 0.8;
 }
 

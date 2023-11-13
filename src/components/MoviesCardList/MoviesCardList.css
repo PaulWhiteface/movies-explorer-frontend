@@ -1,6 +1,8 @@
 .movies-list {
   min-height: 399px;
   margin-top: 65px;
+  display: flex;
+  flex-direction: column;
 }
 
 .movies-list__container {
@@ -13,6 +15,10 @@
   grid-template-rows: repeat(auto-fit, minmax(218px, 1fr));
   column-gap: 20px;
   row-gap: 32px;
+}
+
+.movies-list__err {
+  align-self: center;
 }
 
 @media screen and (max-width: 768px) {
